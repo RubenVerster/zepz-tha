@@ -44,7 +44,7 @@ Please indicate roughly how much time you spent on this challenge in the followi
 
 The API call for your user data is:
 
-1. GET: http://api.stackexchange.com/2.2/users?pagesize=20&order=desc&sort=reputation&site=stackoverflow
+1. GET: https://api.stackexchange.com/2.2/users?pagesize=20&order=desc&sort=reputation&site=stackoverflow
 2. You are free to use any UX libraries you are most comfortable with as this will afford you the opportunity to best display your styling-fu.
 3. You are free to use any storage mechanism you are familiar with.
 

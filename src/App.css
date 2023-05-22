@@ -2,3 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.user_name {
+  transform: translateY(-50%);
+  top: 77%;
+  text-shadow: -1px -1px 1px #000;
+  text-shadow: 1px 1px 1px #000;
+  font-size: 2.2rem;
+  font-weight: 700; }
+
+body {
+  background: linear-gradient(90deg, #a2d9f6 0%, #24488d 100%); }
