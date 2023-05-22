@@ -18,7 +18,7 @@ const userCard: React.FC<{ user: IUser }> = ({ user }) => {
       <Card
         title={title}
         footer={
-          <div className='flex flex-wrap justify-content-end gap-2'>
+          <div className='flex flex-wrap justify-content-end gap-2 mt-4'>
             <Button label='Save' icon='pi pi-check' />
             <Button label='Cancel' icon='pi pi-times' className='p-button-outlined p-button-secondary' />
           </div>
