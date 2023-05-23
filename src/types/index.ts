@@ -25,9 +25,8 @@ export interface IUser {
   display_name: string;
 }
 
-export interface ISimpleUserDetails {
-  user_id: number;
-  display_name: string;
+export interface IExtractedUser {
   profile_image: string;
-  link: string;
+  display_name: string;
+  reputation: number;
 }
