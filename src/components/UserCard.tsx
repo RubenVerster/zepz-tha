@@ -6,6 +6,8 @@ import { IExtractedUser } from '../types';
 
 interface IUserCardProps {
   user: IExtractedUser;
+  isExpanded: boolean;
+  toggleExpansion: () => void;
 }
 
 const UserCard: React.FC<IUserCardProps> = ({ user }) => {
