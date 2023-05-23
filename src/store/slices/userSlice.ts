@@ -30,10 +30,26 @@ export const userSlice = createSlice({
     setExtractedUsers: (state, action) => {
       state.extractedUsers = action.payload;
     },
+    handleUserBlock: (state, action) => {
+      const user = state.extractedUsers.find((user) => user.id === action.payload);
+      if (user) {
+        if (!user.blocked) {
+          user.favourite = false;
+        }
+        user.blocked = !user.blocked;
+      }
+    },
+    toggleUserFavourite: (state, action) => {
+      const user = state.extractedUsers.find((user) => user.id === action.payload);
+      if (user) {
+        user.favourite = !user.favourite;
+      }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setExtractedUsers, toggleTheme, toggleSidebar } = userSlice.actions;
+export const { setExtractedUsers, toggleTheme, toggleSidebar, handleUserBlock, toggleUserFavourite } =
+  userSlice.actions;
 
 export default userSlice.reducer;

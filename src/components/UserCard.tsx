@@ -1,8 +1,9 @@
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
-import { useState } from 'react';
 import { useAppSelector } from '../hooks';
 import { IExtractedUser } from '../types';
+import { useAppDispatch } from '../hooks';
+import { handleUserBlock, toggleUserFavourite } from '../store/slices/userSlice';
 
 interface IUserCardProps {
   user: IExtractedUser;
@@ -11,19 +12,16 @@ interface IUserCardProps {
 }
 
 const UserCard: React.FC<IUserCardProps> = ({ user, isExpanded, toggleExpansion }) => {
-  const [userBlocked, setUserBlocked] = useState(Math.random() > 0.7 ? true : false);
-  const [userFollowed, setUserFollowed] = useState(Math.random() > 0.7 ? true : false);
   const theme = useAppSelector((state) => state.user.theme);
 
-  const handleUserBlocking = () => {
-    setUserBlocked(true);
-    toggleExpansion();
-    if (userFollowed) setUserFollowed(false);
-  };
+  const dispatch = useAppDispatch();
 
-  const toggleUserFollow = () => {
-    setUserFollowed(!userFollowed);
-  };
+  const userFollowed = useAppSelector(
+    (state) => state.user.extractedUsers.find((u) => u.id === user.id)?.favourite
+  );
+  const userBlocked = useAppSelector(
+    (state) => state.user.extractedUsers.find((u) => u.id === user.id)?.blocked
+  );
 
   return (
     <Card
@@ -59,14 +57,14 @@ const UserCard: React.FC<IUserCardProps> = ({ user, isExpanded, toggleExpansion 
             icon={`pi pi-${userFollowed ? 'star' : 'star-fill'}`}
             size='large'
             severity={userFollowed ? 'secondary' : 'warning'}
-            onClick={() => toggleUserFollow()}
+            onClick={() => dispatch(toggleUserFavourite(user.id))}
           />
           <Button
             className='my-6 h-16 bottom-0'
             label='Block'
             severity='danger'
             icon='pi pi-ban'
-            onClick={() => handleUserBlocking()}
+            onClick={() => dispatch(handleUserBlock(user.id)) && toggleExpansion()}
           />
         </div>
       )}
@@ -90,7 +88,7 @@ const UserCard: React.FC<IUserCardProps> = ({ user, isExpanded, toggleExpansion 
         >
           <h3 className='text-lg mb-2'>You have blocked this user</h3>
           <Button
-            onClick={() => setUserBlocked(false)}
+            onClick={() => dispatch(handleUserBlock(user.id))}
             label='Unblock User'
             severity='warning'
             icon='pi pi-eraser'
