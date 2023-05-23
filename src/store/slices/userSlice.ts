@@ -6,6 +6,7 @@ const initialState: UserState = {
   status: 'idle',
   theme: 'dark',
   sidebarVisible: false,
+  extractedUsers: [],
 };
 
 export const userSlice = createSlice({
@@ -26,10 +27,13 @@ export const userSlice = createSlice({
     toggleSidebar: (state) => {
       state.sidebarVisible = !state.sidebarVisible;
     },
+    setExtractedUsers: (state, action) => {
+      state.extractedUsers = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme, toggleSidebar } = userSlice.actions;
+export const { setExtractedUsers, toggleTheme, toggleSidebar } = userSlice.actions;
 
 export default userSlice.reducer;

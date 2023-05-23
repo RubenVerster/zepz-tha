@@ -30,10 +30,13 @@ export interface IExtractedUser {
   display_name: string;
   reputation: number;
   id: number;
+  blocked: boolean;
+  favourite: boolean;
 }
 
 export interface UserState {
   status: 'idle' | 'loading' | 'complete';
   theme: 'dark' | 'light';
   sidebarVisible: boolean;
+  extractedUsers: IExtractedUser[];
 }

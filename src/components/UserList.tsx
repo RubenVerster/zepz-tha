@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { IExtractedUser } from '../types';
 import UserCard from './UserCard';
+import { useAppSelector } from '../hooks';
 
-const UserList: React.FC<{ users: IExtractedUser[] }> = ({ users }) => {
+const UserList = () => {
+  const users = useAppSelector((state) => state.user.extractedUsers);
+
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
 
   const toggleCardExpansion = (userId: number) => {

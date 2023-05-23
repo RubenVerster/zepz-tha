@@ -4,8 +4,6 @@ import 'primereact/resources/primereact.min.css';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-import { IExtractedUser } from './types';
-
 import LoadingCard from './components/LoadingCard';
 import UserList from './components/UserList';
 
@@ -14,12 +12,10 @@ import ErrorCard from './components/ErrorCard';
 import SidebarComponent from './components/SidebarComponent';
 
 import { useAppDispatch } from './hooks';
-import { toggleSidebar } from './store/slices/userSlice';
+import { toggleSidebar, setExtractedUsers } from './store/slices/userSlice';
 import { Button } from 'primereact/button';
 
 function App() {
-  const [users, setUsers] = useState<IExtractedUser[]>([]);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -569,9 +565,7 @@ function App() {
         },
       ];
 
-      setUsers(extractUserData(res));
-
-      console.log(users);
+      dispatch(setExtractedUsers(extractUserData(res)));
     } catch (error) {
       setError(true);
     }
@@ -593,7 +587,7 @@ function App() {
 
         {!loading && (
           <>
-            {!error && <UserList users={users} />}
+            {!error && <UserList />}
             {error && <ErrorCard />}
           </>
         )}

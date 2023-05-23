@@ -9,6 +9,8 @@ export const extractUserData = (dataSet: IUser[]): IExtractedUser[] => {
       display_name: dataSet[i].display_name,
       reputation: dataSet[i].reputation,
       id: dataSet[i].user_id,
+      blocked: false,
+      favourite: false,
     };
     extractedSet.push(extractedUser);
   }
