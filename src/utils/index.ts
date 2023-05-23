@@ -8,6 +8,7 @@ export const extractUserData = (dataSet: IUser[]): IExtractedUser[] => {
       profile_image: dataSet[i].profile_image,
       display_name: dataSet[i].display_name,
       reputation: dataSet[i].reputation,
+      id: dataSet[i].user_id,
     };
     extractedSet.push(extractedUser);
   }

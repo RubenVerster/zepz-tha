@@ -10,18 +10,24 @@ import LoadingCard from './components/LoadingCard';
 import UserList from './components/UserList';
 
 import { extractUserData } from './utils';
-import ThemeChanger from './components/ThemeChanger';
 import ErrorCard from './components/ErrorCard';
+import SidebarComponent from './components/SidebarComponent';
+
+import { useAppDispatch } from './hooks';
+import { toggleSidebar } from './store/slices/userSlice';
+import { Button } from 'primereact/button';
 
 function App() {
   const [users, setUsers] = useState<IExtractedUser[]>([]);
 
-  const [loading, setloading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   const fetchUserSO = async () => {
     setError(false);
-    setloading(true);
+    setLoading(true);
     try {
       // const response = await fetch(
       //   'https://api.stackexchange.com/2.2/users?pagesize=20&order=desc&sort=reputation&site=stackoverflow',
@@ -569,7 +575,7 @@ function App() {
     } catch (error) {
       setError(true);
     }
-    setloading(false);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -579,7 +585,12 @@ function App() {
   return (
     <React.Fragment>
       <div className='relative'>
-        <h1>Stack Overflow Users</h1>
+        <div className='absolute top-2 right-2'>
+          <Button icon='pi pi-arrow-right' onClick={() => dispatch(toggleSidebar())} />
+        </div>
+        <SidebarComponent />
+        <h1 className='text-center text-6xl mt-2'>My SO Baes</h1>
+
         {!loading && (
           <>
             {!error && <UserList users={users} />}
@@ -587,7 +598,6 @@ function App() {
           </>
         )}
         {loading && <LoadingCard />}
-        <ThemeChanger />
       </div>
     </React.Fragment>
   );

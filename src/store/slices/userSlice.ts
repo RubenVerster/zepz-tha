@@ -1,14 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import PrimeReact from 'primereact/api';
-
-export interface UserState {
-  status: 'idle' | 'loading' | 'complete';
-  theme: 'dark' | 'light';
-}
+import { UserState } from '../../types';
 
 const initialState: UserState = {
   status: 'idle',
   theme: 'dark',
+  sidebarVisible: false,
 };
 
 export const userSlice = createSlice({
@@ -26,10 +23,13 @@ export const userSlice = createSlice({
       );
       state.theme = state.theme === 'dark' ? 'light' : 'dark';
     },
+    toggleSidebar: (state) => {
+      state.sidebarVisible = !state.sidebarVisible;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme } = userSlice.actions;
+export const { toggleTheme, toggleSidebar } = userSlice.actions;
 
 export default userSlice.reducer;

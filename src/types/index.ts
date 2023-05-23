@@ -29,4 +29,11 @@ export interface IExtractedUser {
   profile_image: string;
   display_name: string;
   reputation: number;
+  id: number;
+}
+
+export interface UserState {
+  status: 'idle' | 'loading' | 'complete';
+  theme: 'dark' | 'light';
+  sidebarVisible: boolean;
 }
