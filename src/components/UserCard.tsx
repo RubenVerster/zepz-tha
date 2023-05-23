@@ -26,8 +26,8 @@ const UserCard: React.FC<IUserCardProps> = ({ user, isExpanded, toggleExpansion 
 
   return (
     <Card
-      className={`border-4 ${userFollowed && 'border-yellow-400'} relative row-span-${
-        isExpanded ? '2' : '1'
+      className={`border-4 ${userFollowed && 'border-yellow-400'} relative ${
+        isExpanded ? 'row-span-2' : 'row-span-1'
       } ${userBlocked ? 'dimmed' : ''}}`}
     >
       <div>
