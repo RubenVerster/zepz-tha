@@ -10,15 +10,13 @@ interface IUserCardProps {
   toggleExpansion: () => void;
 }
 
-const UserCard: React.FC<IUserCardProps> = ({ user }) => {
-  const [visible, setVisible] = useState(false);
+const UserCard: React.FC<IUserCardProps> = ({ user, isExpanded, toggleExpansion }) => {
   const [userBlocked, setUserBlocked] = useState(Math.random() > 0.7 ? true : false);
   const [userFollowed, setUserFollowed] = useState(Math.random() > 0.7 ? true : false);
   const theme = useAppSelector((state) => state.user.theme);
 
   const handleUserBlocking = () => {
     setUserBlocked(true);
-    setVisible(false);
     if (userFollowed) setUserFollowed(false);
   };
 
@@ -28,13 +26,13 @@ const UserCard: React.FC<IUserCardProps> = ({ user }) => {
 
   return (
     <Card
-      className={`border-4 ${userFollowed && 'border-yellow-400'} relative row-span-${!visible ? '1' : '2'} ${
-        userBlocked ? 'dimmed' : ''
-      }}`}
+      className={`border-4 ${userFollowed && 'border-yellow-400'} relative row-span-${
+        isExpanded ? '2' : '1'
+      } ${userBlocked ? 'dimmed' : ''}}`}
     >
       <div>
         <div
-          onClick={() => setVisible(!visible)}
+          onClick={() => toggleExpansion()}
           className='flex justify-center cursor-pointer hover:scale-110 transition-all ease-in-out relative duration-200'
         >
           <>
@@ -52,8 +50,8 @@ const UserCard: React.FC<IUserCardProps> = ({ user }) => {
         <p className='mt-6 text-center'>Reputation: {user.reputation}</p>
       </div>
 
-      {visible && (
-        <div className={`mt-12 lg:p-12 ${visible ? 'flex flex-col' : 'hidden'}`}>
+      {isExpanded && (
+        <div className={`mt-12 lg:p-12 ${isExpanded ? 'flex flex-col' : 'hidden'}`}>
           <Button
             className='h-32 p-button-outlined p-button-secondary'
             label={userFollowed ? 'Unfollow User' : 'Follow User'}
