@@ -6,7 +6,6 @@ const UserList: React.FC<{ users: IExtractedUser[] }> = ({ users }) => {
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
 
   const toggleCardExpansion = (userId: number) => {
-    console.log(userId);
     if (expandedCards.includes(userId)) {
       setExpandedCards(expandedCards.filter((id) => id !== userId));
     } else {

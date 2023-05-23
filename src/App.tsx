@@ -9,13 +9,13 @@ import { IExtractedUser } from './types';
 import LoadingCard from './components/LoadingCard';
 import UserList from './components/UserList';
 
+import { extractUserData } from './utils';
 import ErrorCard from './components/ErrorCard';
 import SidebarComponent from './components/SidebarComponent';
-import { extractUserData } from './utils';
 
-import { Button } from 'primereact/button';
 import { useAppDispatch } from './hooks';
 import { toggleSidebar } from './store/slices/userSlice';
+import { Button } from 'primereact/button';
 
 function App() {
   const [users, setUsers] = useState<IExtractedUser[]>([]);
