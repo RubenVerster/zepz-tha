@@ -4,22 +4,17 @@ import 'primereact/resources/primereact.min.css';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-import { useAppDispatch, useAppSelector } from './hooks';
-import { toggleTheme } from './store/slices/userSlice';
-
 import { IExtractedUser } from './types';
 
-import { Button } from 'primereact/button';
 import LoadingCard from './components/LoadingCard';
 import UserList from './components/UserList';
 
 import { extractUserData } from './utils';
+import ThemeChanger from './components/ThemeChanger';
+import ErrorCard from './components/ErrorCard';
 
 function App() {
   const [users, setUsers] = useState<IExtractedUser[]>([]);
-
-  const theme = useAppSelector((state) => state.user.theme);
-  const dispatch = useAppDispatch();
 
   const [loading, setloading] = useState(true);
   const [error, setError] = useState(false);
@@ -588,20 +583,11 @@ function App() {
         {!loading && (
           <>
             {!error && <UserList users={users} />}
-            {error && <p>Error</p>}
+            {error && <ErrorCard />}
           </>
         )}
         {loading && <LoadingCard />}
-      </div>
-      <div className='absolute top-2 right-2'>
-        <Button
-          className={`p-2 text-center  rounded ${
-            theme === 'dark' ? 'bg-gray-100 text-black' : 'bg-gray-700 text-white'
-          }`}
-          onClick={() => dispatch(toggleTheme())}
-        >
-          <span className={` pi pi-${theme === 'dark' ? 'sun' : 'moon'}`}></span>
-        </Button>
+        <ThemeChanger />
       </div>
     </React.Fragment>
   );
