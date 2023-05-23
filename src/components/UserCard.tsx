@@ -17,6 +17,7 @@ const UserCard: React.FC<IUserCardProps> = ({ user, isExpanded, toggleExpansion 
 
   const handleUserBlocking = () => {
     setUserBlocked(true);
+    toggleExpansion();
     if (userFollowed) setUserFollowed(false);
   };
 
