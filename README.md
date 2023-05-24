@@ -2,6 +2,9 @@
 
 No extra setup require, just `npm i` to install all dependencies.
 
+There will be some errors and warnings in the terminal after installing. That's because CRA is an absolute mess and I don't have time to fix it. It's just a warning, so it's fine.
+Vite is much better for using the technologies I used, but you know, client wanted CRA, so I used CRA.
+
 Using node `v16.14.2` is recommended, or is it forced...?
 
 ## Usage
