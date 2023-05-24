@@ -39,4 +39,7 @@ export interface UserState {
   theme: 'dark' | 'light';
   sidebarVisible: boolean;
   extractedUsers: IExtractedUser[];
+  loading: boolean;
+  error: boolean | null;
+  errorMessage: string;
 }

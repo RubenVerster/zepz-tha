@@ -7,6 +7,9 @@ const initialState: UserState = {
   theme: 'dark',
   sidebarVisible: false,
   extractedUsers: [],
+  loading: false,
+  error: null,
+  errorMessage: '',
 };
 
 export const userSlice = createSlice({
@@ -45,11 +48,28 @@ export const userSlice = createSlice({
         user.favourite = !user.favourite;
       }
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
+    setErrorMessage: (state, action) => {
+      state.errorMessage = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setExtractedUsers, toggleTheme, toggleSidebar, handleUserBlock, toggleUserFavourite } =
-  userSlice.actions;
+export const {
+  setLoading,
+  setExtractedUsers,
+  toggleTheme,
+  toggleSidebar,
+  handleUserBlock,
+  toggleUserFavourite,
+  setError,
+  setErrorMessage,
+} = userSlice.actions;
 
 export default userSlice.reducer;
