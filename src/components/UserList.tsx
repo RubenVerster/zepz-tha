@@ -27,7 +27,7 @@ const UserList = () => {
     setRows(event.rows);
   };
 
-  const filteredUsers = users.filter((user) => {
+  const filteredUsers = users?.filter((user) => {
     // Check if user's display_name matches the filter string
     const doesNameMatch = user.display_name.toLowerCase().includes(filterString.toLowerCase());
 
@@ -38,7 +38,7 @@ const UserList = () => {
     // If no filters are active, return true only if the name matches the filter string
     return doesNameMatch;
   });
-  const userList = filteredUsers.slice(first, first + rows).map((user: IExtractedUser) => {
+  const userList = filteredUsers?.slice(first, first + rows).map((user: IExtractedUser) => {
     const isExpanded = expandedCards.includes(user.id);
     return (
       <UserCard
@@ -56,7 +56,7 @@ const UserList = () => {
         <Paginator
           first={first}
           rows={rows}
-          totalRecords={filteredUsers.length}
+          totalRecords={filteredUsers?.length}
           rowsPerPageOptions={[3, 6]}
           onPageChange={onPageChange}
           template='RowsPerPageDropdown FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink'
