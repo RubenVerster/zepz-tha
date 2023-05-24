@@ -48,6 +48,4 @@ describe('UserCard', () => {
     expect(screen.getByAltText('Card')).toBeInTheDocument();
     expect(screen.getByText(/Reputation: 100/i)).toBeInTheDocument();
   });
-
-  // Add more test cases to cover different scenarios and component behaviors
 });
