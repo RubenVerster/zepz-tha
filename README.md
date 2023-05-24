@@ -18,9 +18,9 @@ Project is live here: https://zepz-tha.vercel.app/
 - TypeScript is sexy too, so I used TypeScript
 - React + Typescript is sexy, so I used React + TypeScript
 - Tailwind is sexy, so I used Tailwind
-- And PrimeReact was used since I am using it in a sideproject and it was a nice changeup from MUI, but I think PrimeReact is also sexy
-- The architecture is good for a small application, otherwise I'd be losing unnecessary of time implementing a more complex architecture
-- There are barely any comments since the code is pretty self explanitory
+- And PrimeReact was used, since I am using it in a sideproject and it was a nice changeup from MUI, but I think PrimeReact is also sexy
+- The architecture is sexy for a small application, otherwise I'd be losing unnecessary of time implementing a more complex architecture
+- There are barely any comments since the code is pretty self explanitory, which is, yes, sexy
 
 ## Time Constraints Limitations, aka, 'Assign To Junior'
 
