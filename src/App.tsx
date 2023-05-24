@@ -23,20 +23,18 @@ function App() {
 
   return (
     <React.Fragment>
-      <div className='relative '>
-        <div className='flex justify-between p-2 bg-blue-500'>
-          <h1 className='text-4xl '>My SO Baes</h1>
-          <Button icon='pi pi-arrow-right' onClick={() => dispatch(toggleSidebar())} />
-        </div>
-        {!loading && (
-          <>
-            {!error && <UserList />}
-            {error && <ErrorCard />}
-          </>
-        )}
-        {loading && <LoadingCard />}
-        <SidebarComponent />
+      <div className='flex justify-between p-2 bg-blue-500 sticky top-0 z-50'>
+        <h1 className='text-4xl '>My SO Baes</h1>
+        <Button icon='pi pi-arrow-right' onClick={() => dispatch(toggleSidebar())} />
       </div>
+      {!loading && (
+        <>
+          {!error && <UserList />}
+          {error && <ErrorCard />}
+        </>
+      )}
+      {loading && <LoadingCard />}
+      <SidebarComponent />
     </React.Fragment>
   );
 }

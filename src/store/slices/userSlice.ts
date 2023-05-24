@@ -31,7 +31,6 @@ export const userSlice = createSlice({
       state.sidebarVisible = !state.sidebarVisible;
     },
     setExtractedUsers: (state, action) => {
-      // Merge and de-duplicate users
       const usersById = new Map();
 
       [...state.extractedUsers, ...action.payload].forEach((user) => {
