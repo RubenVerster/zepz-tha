@@ -1,8 +1,8 @@
 ## Installation
 
-No necessary apps require, just `npm i` to install all dependencies.
+No extra setup require, just `npm i` to install all dependencies.
 
-Using node `v16.14.2` is recommended.
+Using node `v16.14.2` is recommended, or is it forced...?
 
 ## Usage
 
@@ -11,3 +11,27 @@ Run `npm run start` to start the application.
 ## Production
 
 Project is live here: https://zepz-tha.vercel.app/
+
+## Design Decisions
+
+- React is sexy, so I used React
+- TypeScript is sexy too, so I used TypeScript
+- React + Typescript is sexy, so I used React + TypeScript
+- Tailwind is sexy, so I used Tailwind
+- And PrimeReact was used since I am using it in a sideproject and it was a nice changeup from MUI, but I think PrimeReact is also sexy
+- The architecture is good for a small application, otherwise I'd be losing unnecessary of time implementing a more complex architecture
+- There are barely any comments since the code is pretty self explanitory
+
+## Time Constraints Limitations, aka, 'Assign To Junior'
+
+- some nice animations would also have been nice, even some micro-interactions
+- some more in-depth tests would've been nice as well, but there are basic ones
+- Split up the redux store some more, where there would be 'settings' and the 'fetched users'
+
+## Time Category Allocation
+
+- Review: Reading the tech spec and email? Like 10mins
+- Design: 0min. I design with CSS and Component Libraries
+- Implementation: About 1-2 hours out of my night for 2 days, so about 4.5 hours
+- Testing: 30min
+- Documentation: Like 15min or summin, I dunno. I have a 60WPM, so it goes quick :P
