@@ -3,7 +3,7 @@
 No extra setup require, just `npm i` to install all dependencies.
 
 There will be some errors and warnings in the terminal after installing. That's because CRA is an absolute mess and I don't have time to fix it. It's just a warning, so it's fine.
-Vite is much better for using the technologies I used, but you know, client wanted CRA, so I used CRA.
+Vite is much better for using the technologies I used, but you know, client wanted CRA, so I used CRA
 
 Using node `v16.14.2` is recommended, or is it forced...?
 
@@ -30,6 +30,7 @@ Project is live here: https://zepz-tha.vercel.app/
 - some nice animations would also have been nice, even some micro-interactions
 - some more in-depth tests would've been nice as well, but there are basic ones
 - Split up the redux store some more, where there would be 'settings' and the 'fetched users'
+- - When I reached my query limits for the API, I would have liked to set an error in the store that would prevent the data call. Something that would grab the time limit from the error response and then implement a timer that would prevent the call until the time limit is up
 
 ## Time Category Allocation
 
