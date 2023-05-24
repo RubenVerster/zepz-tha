@@ -6,12 +6,17 @@ import { extractUserData } from '../utils';
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
 export const useFetchUserSO = () => {
   const dispatch = useAppDispatch();
+  const extractedUsers = useAppSelector((state) => state.user.extractedUsers);
 
   useEffect(() => {
     const fetchUserSO = async () => {
+      if (extractedUsers && extractedUsers.length > 0) {
+        // Data already exists in state, no need to fetch
+        return;
+      }
+
       dispatch(setLoading(true));
       try {
         const response = await fetch(
@@ -46,5 +51,5 @@ export const useFetchUserSO = () => {
     };
 
     fetchUserSO();
-  }, [dispatch]);
+  }, [dispatch, extractedUsers]);
 };
