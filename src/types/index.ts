@@ -42,4 +42,7 @@ export interface UserState {
   loading: boolean;
   error: boolean | null;
   errorMessage: string;
+  filter: string;
+  filterBlocked: boolean;
+  filterFavourite: boolean;
 }

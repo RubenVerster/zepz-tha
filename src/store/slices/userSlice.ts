@@ -10,6 +10,9 @@ const initialState: UserState = {
   loading: false,
   error: null,
   errorMessage: '',
+  filter: '',
+  filterBlocked: false,
+  filterFavourite: false,
 };
 
 export const userSlice = createSlice({
@@ -54,6 +57,9 @@ export const userSlice = createSlice({
         user.favourite = !user.favourite;
       }
     },
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
@@ -62,6 +68,18 @@ export const userSlice = createSlice({
     },
     setErrorMessage: (state, action) => {
       state.errorMessage = action.payload;
+    },
+    toggleUserBlockedFilter: (state) => {
+      if (state.filterFavourite) {
+        state.filterFavourite = !state.filterFavourite;
+      }
+      state.filterBlocked = !state.filterBlocked;
+    },
+    toggleUserFavouriteFilter: (state) => {
+      if (state.filterBlocked) {
+        state.filterBlocked = !state.filterBlocked;
+      }
+      state.filterFavourite = !state.filterFavourite;
     },
   },
 });
@@ -76,6 +94,9 @@ export const {
   toggleUserFavourite,
   setError,
   setErrorMessage,
+  setFilter,
+  toggleUserBlockedFilter,
+  toggleUserFavouriteFilter,
 } = userSlice.actions;
 
 export default userSlice.reducer;

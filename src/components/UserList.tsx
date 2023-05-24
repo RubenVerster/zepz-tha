@@ -6,6 +6,10 @@ import { useAppSelector } from '../hooks';
 
 const UserList = () => {
   const users = useAppSelector((state) => state.user.extractedUsers);
+  const filterBlocked = useAppSelector((state) => state.user.filterBlocked);
+  const filterFavourite = useAppSelector((state) => state.user.filterFavourite);
+  const filterString = useAppSelector((state) => state.user.filter);
+
   const [first, setFirst] = useState(0);
   const [rows, setRows] = useState(6);
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
@@ -23,7 +27,18 @@ const UserList = () => {
     setRows(event.rows);
   };
 
-  const userList = users.slice(first, first + rows).map((user: IExtractedUser) => {
+  const filteredUsers = users.filter((user) => {
+    // Check if user's display_name matches the filter string
+    const doesNameMatch = user.display_name.toLowerCase().includes(filterString.toLowerCase());
+
+    // Apply the filtered string to the existing filters
+    if (filterBlocked) return user.blocked && doesNameMatch;
+    if (filterFavourite) return user.favourite && doesNameMatch;
+
+    // If no filters are active, return true only if the name matches the filter string
+    return doesNameMatch;
+  });
+  const userList = filteredUsers.slice(first, first + rows).map((user: IExtractedUser) => {
     const isExpanded = expandedCards.includes(user.id);
     return (
       <UserCard
@@ -41,7 +56,7 @@ const UserList = () => {
         <Paginator
           first={first}
           rows={rows}
-          totalRecords={users.length}
+          totalRecords={filteredUsers.length}
           rowsPerPageOptions={[3, 6]}
           onPageChange={onPageChange}
           template='RowsPerPageDropdown FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink'
