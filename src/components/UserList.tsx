@@ -52,7 +52,8 @@ const UserList = () => {
 
   return (
     <div className='w-full p-12'>
-      <div className='flex justify-center'>
+      <div className='w-full grid lg:grid-cols-3 md:grid-cols-1 gap-4 grid-rows-12'>{userList}</div>
+      <div className='flex justify-center mt-4'>
         <Paginator
           first={first}
           rows={rows}
@@ -62,7 +63,6 @@ const UserList = () => {
           template='RowsPerPageDropdown FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink'
         />
       </div>
-      <div className='w-full grid lg:grid-cols-3 md:grid-cols-1 gap-4 grid-rows-12  mt-4'>{userList}</div>
     </div>
   );
 };
