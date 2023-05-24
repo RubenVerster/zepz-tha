@@ -569,7 +569,7 @@ function App() {
     } catch (error) {
       setError(true);
     }
-    setLoading(true);
+    setLoading(false);
   };
 
   useEffect(() => {
